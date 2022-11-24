@@ -4,13 +4,12 @@
 {% block payment_details_content %}
 
 <form action="{% url 'checkout:preview' %}" class="form-stacked" method="POST">
-    <script type="text/javascript">
-    var stripe = Stripe('pk_test_51LsNhRSBeZkgYlGWZeVlpGmXC9g1VW7cQ5pgyIgODPMzEcj98MKLTxDDBjc2npuWJlq2Xj6xvg5e9Z5YVQXrzowi00JNPTx9U6');
-    </script>
+
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 
             data-key="{{ stripe_publishable_key }}" data-amount="{{ order_total_incl_tax_cents }}"
             data-name="{{ shop_name }}"
+            data-currency="inr"
             data-description="{{ basket.num_items }} items ({{ order_total.incl_tax|currency }})">
     </script>
 
