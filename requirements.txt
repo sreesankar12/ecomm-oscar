@@ -25,15 +25,13 @@ sorl-thumbnail==12.9.0
 sqlparse==0.4.3
 stripe==5.0.0
 urllib3==1.26.12
-distlib             0.3.6
-filelock            3.4.1
-gunicorn            20.1.0
-importlib-metadata  4.8.3
-importlib-resources 5.4.0
-pip                 20.0.2
-platformdirs        2.4.0
-setuptools          40.6.2
-typing-extensions   4.1.1
-virtualenv          20.16.7
-whitenoise          5.3.0
-zipp                3.6.0
+distlib==0.3.6
+filelock==3.4.1
+gunicorn==20.1.0
+importlib-metadata==4.8.3
+importlib-resources==5.4.0
+platformdirs==2.4.0
+typing-extensions==4.1.1
+virtualenv==20.16.7
+whitenoise==5.3.0
+zipp==3.6.0
