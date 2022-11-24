@@ -26,9 +26,9 @@ location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), x
 SECRET_KEY = 'django-insecure-6i@(s!5a!i8f15hb%+smioq=k40(y^g^8zmeincu*szmrnf)wb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
-DEBUG = False
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic',
     #oscar
     'django.contrib.sites',
     'django.contrib.flatpages',
@@ -91,7 +90,6 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,14 +135,27 @@ AUTHENTICATION_BACKENDS = (
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-WHITENOISE_USE_FINDERS = True
+
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': 'ecom_db',
+#          'USER': 'ecom_user',
+#          'PASSWORD': 1234,
+#          'HOST': 'localhost',
+#          'PORT': '5432',
+#      }
+#  }
+#
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -189,16 +200,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')
-    ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -210,5 +215,3 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STRIPE_SECRET_KEY = "sk_test_51LsNhRSBeZkgYlGWi0zDQWo74A1gsQd6hkfj9pYLICclqNUXbokZdFCsBen3xrVVSyFmBaqjKmzAimCDUjXpsdKp004bf94EPq"
 STRIPE_PUBLISHABLE_KEY = "pk_test_51LsNhRSBeZkgYlGWZeVlpGmXC9g1VW7cQ5pgyIgODPMzEcj98MKLTxDDBjc2npuWJlq2Xj6xvg5e9Z5YVQXrzowi00JNPTx9U6"
 STRIPE_CURRENCY = "inr"
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
